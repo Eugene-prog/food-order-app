@@ -1,4 +1,6 @@
 import sytles from "./MealList.module.css";
+import Card from "../UI/Card";
+import MealItem from "./MealItem/MealItem";
 
 const DUMMY_MEALS = [
   {
@@ -28,11 +30,15 @@ const DUMMY_MEALS = [
 ];
 
 const MealList = (props) => {
-  const mealList = DUMMY_MEALS.map((meal) => <li>{meal.name}</li>);
+  const mealList = DUMMY_MEALS.map((meal) => (
+    <MealItem key={meal.id} name={meal.name} description={meal.description} price={meal.price} />
+  ));
 
   return (
     <section className={sytles.meals}>
-      <ul>{mealList}</ul>
+      <Card>
+        <ul>{mealList}</ul>
+      </Card>
     </section>
   );
 };
